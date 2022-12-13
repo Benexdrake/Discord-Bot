@@ -1,0 +1,42 @@
+[
+  {
+    "CommandName": "pokemon",
+    "Parameters": [
+      "[None] like !pokemon",
+      "[Number] like !pokemon 4",
+      "[Pokemon Name] like !pokemon glumanda"
+    ],
+    "Description": "None for a Random Pokemon, a Number for a Pokemon or a Name"
+  },
+  {
+    "CommandName": "movie",
+    "Parameters": [
+      "[None] like !movie",
+      "[Movie Name] like !movie spider-man"
+    ],
+    "Description": "None for a Random Movie or a Name"
+  },
+  {
+    "CommandName": "anime",
+    "Parameters": [
+      "[None] like !anime",
+      "[Anime Name] !anime attack on titan"
+    ],
+    "Description": "None for a Random Anime or a Name"
+  },
+  {
+    "CommandName": "gif",
+    "Parameters": [
+      "[Parameter] like !gif sonic the hedgehog"
+    ],
+    "Description": "Parameter for a Random Gif"
+  },
+  {
+    "CommandName": "purge",
+    "Parameters": [
+      "[Number] like !purge 5",
+      "[All] like !purge all"
+    ],
+    "Description": "Number for a Purge with max count or All for Purging the complete Room"
+  }
+]

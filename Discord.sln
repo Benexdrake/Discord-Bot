@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord_Bot_Console", "Discord_Bot_Console\Discord_Bot_Console.csproj", "{BE49ABC2-760F-406D-A0EB-2EE43FEEC102}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webscraper_API", "C:\Users\Benex\source\repos\WebScraper 3.0\Webscraper_API\Webscraper_API.csproj", "{E795F3F0-1352-4BC3-B8EB-F38850AF399A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IHK_PDF_API", "C:\Users\Benex\source\repos\IHK_PDF_API\IHK_PDF_API.csproj", "{56E79636-E1BF-4215-AFD7-7FB704D0FF51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE49ABC2-760F-406D-A0EB-2EE43FEEC102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE49ABC2-760F-406D-A0EB-2EE43FEEC102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE49ABC2-760F-406D-A0EB-2EE43FEEC102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE49ABC2-760F-406D-A0EB-2EE43FEEC102}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E795F3F0-1352-4BC3-B8EB-F38850AF399A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E795F3F0-1352-4BC3-B8EB-F38850AF399A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E795F3F0-1352-4BC3-B8EB-F38850AF399A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E795F3F0-1352-4BC3-B8EB-F38850AF399A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E79636-E1BF-4215-AFD7-7FB704D0FF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E79636-E1BF-4215-AFD7-7FB704D0FF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E79636-E1BF-4215-AFD7-7FB704D0FF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E79636-E1BF-4215-AFD7-7FB704D0FF51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2571924-369F-409C-8C63-E1A5265C7958}
+	EndGlobalSection
+EndGlobal
