@@ -16,17 +16,15 @@ global using System.Linq;
 global using System.Reflection;
 global using System.Threading.Tasks;
 
-global using GiphyDotNet.Manager;
-global using GiphyDotNet.Model.Parameters;
-global using GiphyDotNet.Model.Results;
+
 
 global using Newtonsoft.Json;
 
-global using Discord_Bot_Console;
-global using Discord_Bot_Console.Controllers;
-global using Discord_Bot_Console.Data;
-global using Discord_Bot_Console.Interfaces;
-global using Discord_Bot_Console.Models;
+global using Discord_Bot_Client;
+//global using Discord_Bot_Client.Controllers;
+global using Discord_Bot_Client.Data;
+//global using Discord_Bot_Client.Interfaces;
+//global using Discord_Bot_Client.Models;
 
 global using Webscraper_API;
 global using Webscraper_API.Interfaces;
@@ -50,5 +48,3 @@ global using Webscraper_API.Scraper.TCG_Pokemon.Models;
 
 global using Webscraper_API.Scraper.TCG_Magic.Controller;
 global using Webscraper_API.Scraper.TCG_Magic.Model;
-
-global using IHK_PDF_API;

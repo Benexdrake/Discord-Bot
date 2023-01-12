@@ -174,7 +174,7 @@ public class DiscordEmbedBuilder
         {
             IsInline = true,
             Name = "Rating",
-            Value = a.Rating
+            Value = a.Rating.ToString().Replace(",", ".")
         });
         embedFieldList.Add(new EmbedFieldBuilder()
         {
@@ -308,7 +308,6 @@ public class DiscordEmbedBuilder
 
         embed.Title = h.CommandName;
         embed.Fields = embedfield;
-
 
         return embed;
     }

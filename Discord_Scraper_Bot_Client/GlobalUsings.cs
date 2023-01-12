@@ -22,11 +22,7 @@ global using GiphyDotNet.Model.Results;
 
 global using Newtonsoft.Json;
 
-global using Discord_Bot_Console;
-global using Discord_Bot_Console.Controllers;
-global using Discord_Bot_Console.Data;
-global using Discord_Bot_Console.Interfaces;
-global using Discord_Bot_Console.Models;
+global using Discord_Scraper_Bot_Client.Data;
 
 global using Webscraper_API;
 global using Webscraper_API.Interfaces;
@@ -50,5 +46,3 @@ global using Webscraper_API.Scraper.TCG_Pokemon.Models;
 
 global using Webscraper_API.Scraper.TCG_Magic.Controller;
 global using Webscraper_API.Scraper.TCG_Magic.Model;
-
-global using IHK_PDF_API;

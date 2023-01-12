@@ -1,7 +1,7 @@
 ﻿using Discord.Interactions;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
-namespace Discord_Bot_Console.Controllers
+namespace Discord_Bot_Console.Modules
 {
     public class DiscordBotModule : ModuleBase<SocketCommandContext>, IDiscordBotModule
     {
@@ -62,11 +62,11 @@ namespace Discord_Bot_Console.Controllers
         [Command("IHKPDF", true)]
         public async Task GetIHKRandomPDF([Remainder] string param)
         {
-            
+
             var message = await Context.Message.ReplyAsync($"Please wait, creating PDF for {param}");
-            
+
             await _pdfSeperator.Start(_pdfPath);
-            var file = await _pdfRandomizer.Start(param,_pdfPath,_pdfOutputPath);
+            var file = await _pdfRandomizer.Start(param, _pdfPath, _pdfOutputPath);
             if (!string.IsNullOrWhiteSpace(file))
             {
                 var e = new List<FileAttachment>();
@@ -85,7 +85,7 @@ namespace Discord_Bot_Console.Controllers
             DiscordEmbedBuilder discordEmbedBuilder = new DiscordEmbedBuilder();
             var embed = await discordEmbedBuilder.HelpListEmbed(Helps.Helpings);
 
-           
+
             await Context.Message.ReplyAsync(embed: embed.Build());
         }
 
