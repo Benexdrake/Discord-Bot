@@ -5,6 +5,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Webscraper_API.Interfaces;
 
 namespace Discord_Bot_Client.Commands.Modules
 {
@@ -64,7 +65,6 @@ namespace Discord_Bot_Client.Commands.Modules
                     var a = _crunchyrollDBContext.Animes.Where(x => x.Url.Equals(urls[i])).FirstOrDefault();
                     if (a is null)
                     {
-                        _cr_Api.Episodes = 0;
                         var AE = _cr_Api.GetAnimewithEpisodes(urls[i], 4000).Result;
                         if (AE is not null)
                         {

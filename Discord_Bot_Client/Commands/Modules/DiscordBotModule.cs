@@ -19,7 +19,11 @@ namespace Discord_Bot_Client.Commands.Modules
 
 
 
-
+        [Command("Test")]
+        public async Task Test()
+        {
+            Console.WriteLine(Context.Guild.GetUsersAsync());
+        }
 
 
 

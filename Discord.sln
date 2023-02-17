@@ -5,13 +5,15 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord_Bot_Console", "Discord_Bot_Console\Discord_Bot_Console.csproj", "{BE49ABC2-760F-406D-A0EB-2EE43FEEC102}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webscraper_API", "C:\Users\Benex\source\repos\WebScraper 3.0\Webscraper_API\Webscraper_API.csproj", "{E795F3F0-1352-4BC3-B8EB-F38850AF399A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IHK_PDF_API", "C:\Users\Benex\source\repos\IHK_PDF_API\IHK_PDF_API.csproj", "{56E79636-E1BF-4215-AFD7-7FB704D0FF51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IHK_PDF_API", "..\IHK_PDF_API\IHK_PDF_API.csproj", "{56E79636-E1BF-4215-AFD7-7FB704D0FF51}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord_Scraper_Bot_Client", "Discord_Scraper_Bot_Client\Discord_Scraper_Bot_Client.csproj", "{A14E58B8-289D-444E-AECD-999F154EDF04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discord_Bot_Client", "Discord_Bot_Client\Discord_Bot_Client.csproj", "{EE8A4463-928B-41DE-BE2A-8C94FEB0F2AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord_Bot_Client", "Discord_Bot_Client\Discord_Bot_Client.csproj", "{EE8A4463-928B-41DE-BE2A-8C94FEB0F2AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Webscraper_API", "..\WebScraper-3.0\Webscraper_API\Webscraper_API.csproj", "{D94EE67B-93C5-4B0F-81BA-949924A00DF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discord_Bot", "Discord_Bot\Discord_Bot.csproj", "{C1AC1B2C-AB7B-455F-BF6E-6DCA962896DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +25,6 @@ Global
 		{BE49ABC2-760F-406D-A0EB-2EE43FEEC102}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE49ABC2-760F-406D-A0EB-2EE43FEEC102}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE49ABC2-760F-406D-A0EB-2EE43FEEC102}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E795F3F0-1352-4BC3-B8EB-F38850AF399A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E795F3F0-1352-4BC3-B8EB-F38850AF399A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E795F3F0-1352-4BC3-B8EB-F38850AF399A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E795F3F0-1352-4BC3-B8EB-F38850AF399A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56E79636-E1BF-4215-AFD7-7FB704D0FF51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56E79636-E1BF-4215-AFD7-7FB704D0FF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56E79636-E1BF-4215-AFD7-7FB704D0FF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +37,14 @@ Global
 		{EE8A4463-928B-41DE-BE2A-8C94FEB0F2AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE8A4463-928B-41DE-BE2A-8C94FEB0F2AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE8A4463-928B-41DE-BE2A-8C94FEB0F2AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D94EE67B-93C5-4B0F-81BA-949924A00DF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D94EE67B-93C5-4B0F-81BA-949924A00DF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D94EE67B-93C5-4B0F-81BA-949924A00DF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D94EE67B-93C5-4B0F-81BA-949924A00DF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1AC1B2C-AB7B-455F-BF6E-6DCA962896DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1AC1B2C-AB7B-455F-BF6E-6DCA962896DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1AC1B2C-AB7B-455F-BF6E-6DCA962896DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1AC1B2C-AB7B-455F-BF6E-6DCA962896DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

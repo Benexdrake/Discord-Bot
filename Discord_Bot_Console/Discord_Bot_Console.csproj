@@ -36,8 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="C:\Users\Benex\source\repos\IHK_PDF_API\IHK_PDF_API.csproj" />
-    <ProjectReference Include="C:\Users\Benex\source\repos\WebScraper 3.0\Webscraper_API\Webscraper_API.csproj" />
+    <ProjectReference Include="..\..\IHK_PDF_API\IHK_PDF_API.csproj" />
+    <ProjectReference Include="..\..\WebScraper-3.0\Webscraper_API\Webscraper_API.csproj" />
   </ItemGroup>
 
   <ItemGroup>
