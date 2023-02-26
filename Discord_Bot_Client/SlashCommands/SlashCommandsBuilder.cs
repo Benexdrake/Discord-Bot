@@ -21,17 +21,9 @@ namespace Discord_Bot_Client.SlashCommands
         {
             // Erstellen aller Slash Commands
 
-            var options = new List<SlashCommandOptionBuilder>();
-
-            for (int i = 0; i < 5; i++)
-            {
-                options.Add(new SlashCommandOptionBuilder().WithName($"a").WithDescription($"test").WithType(ApplicationCommandOptionType.String));
-            }
-
-
             var cc = new SlashCommandBuilder();
             cc.WithName("crunchyroll")
-            .WithDescription("this is a test yo")
+            .WithDescription("Searching for an Anime from Crunchyroll, u can choose between name, url, rating, episode count, publisher and genres")
             .AddOption(new SlashCommandOptionBuilder().WithName("name").WithDescription("search with name").WithType(ApplicationCommandOptionType.String))
             .AddOption(new SlashCommandOptionBuilder().WithName("url").WithDescription("search with url").WithType(ApplicationCommandOptionType.String))
             .AddOption(new SlashCommandOptionBuilder().WithName("rating").WithDescription("search with rating 0-5").WithType(ApplicationCommandOptionType.Number))

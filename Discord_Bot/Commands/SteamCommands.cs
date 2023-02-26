@@ -1,18 +1,19 @@
 ﻿using Discord;
 using Discord.Commands;
+using Discord_Bot.Interfaces.Services;
 using Webscraper_API;
 
 namespace Discord_Bot.Commands;
 
 public class SteamCommands : ModuleBase<SocketCommandContext>
 {
-    private readonly SteamService _ss;
+    private readonly ISteamService _ss;
 	private readonly Browser _browser;
 	private readonly ISteam_Api _api;
 
 	public SteamCommands(IServiceProvider service)
 	{
-		_ss = service.GetRequiredService<SteamService>();
+		_ss = service.GetRequiredService<ISteamService>();
 		_browser= service.GetRequiredService<Browser>();
 		_api = service.GetRequiredService<ISteam_Api>();
 	}

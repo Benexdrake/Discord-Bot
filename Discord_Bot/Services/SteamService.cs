@@ -2,10 +2,11 @@
 using System.Text.Json.Nodes;
 using System.Text;
 using Webscraper_API.Scraper.Steam.Models;
+using Discord_Bot.Interfaces.Services;
 
 namespace Discord_Bot.Services;
 
-public class SteamService
+public class SteamService : ISteamService
 {
     private readonly HttpClient _client;
     private readonly IConfiguration _config;

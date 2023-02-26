@@ -1,14 +1,15 @@
 ﻿using System.Net.Http.Json;
+using Discord_Bot.Interfaces.Services;
 using Webscraper_API.Scraper.Crunchyroll.Models;
 
 namespace Discord_Bot.Services;
-public class CrunchyrollService
+public class CrunchyrollService : ICrunchyrollService
 {
     private readonly HttpClient _client;
     private readonly IConfiguration _config;
 
     public CrunchyrollService(IServiceProvider service, IConfiguration config)
-	{
+    {
         _client = service.GetRequiredService<HttpClient>();
         _config = config;
     }
@@ -16,7 +17,6 @@ public class CrunchyrollService
     public async Task<Anime[]> GetAnimesAsync()
     {
         var animes = _client.GetFromJsonAsync<Anime[]>(_config["API"] + "/api/Crunchyroll").Result;
-
         return animes;
     }
 
@@ -34,13 +34,19 @@ public class CrunchyrollService
 
     public async Task<Anime[]> GetAnimesByNameAsync(string param)
     {
-        var anime = await _client.GetFromJsonAsync<Anime[]>(_config["API"] + "/api/Crunchyroll/animesbyname?name="+param);
+        var anime = await _client.GetFromJsonAsync<Anime[]>(_config["API"] + "/api/Crunchyroll/animesbyname?name=" + param);
         return anime;
     }
 
     public async Task<Anime[]> GetAnimesByGenreAsync(string genre)
     {
-        var anime = await _client.GetFromJsonAsync<Anime[]>(_config["API"] + "/api/Crunchyroll/animesbygenre?genre=" + genre);
+        var anime = await _client.GetFromJsonAsync<Anime[]>(_config["API"] + "/api/Crunchyroll/animesbygenre?tags=" + genre);
+        return anime;
+    }
+
+    public async Task<Anime[]> GetAnimeByPublisherAsync(string publisher)
+    {
+        var anime = await _client.GetFromJsonAsync<Anime[]>(_config["API"] + "/api/Crunchyroll/animesbypublisher?publisher=" + publisher);
         return anime;
     }
     public async Task<Anime[]> GetAnimesByEpisodesAsync(int episodes)
@@ -67,6 +73,6 @@ public class CrunchyrollService
 
     public async Task CreateOrUpdateAsync(Anime_Episodes AE)
     {
-        var response = await _client.PostAsJsonAsync(_config["API"]  + "/api/Crunchyroll", AE);
+        var response = await _client.PostAsJsonAsync(_config["API"] + "/api/Crunchyroll", AE);
     }
 }

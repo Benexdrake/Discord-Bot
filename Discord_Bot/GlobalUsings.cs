@@ -10,16 +10,23 @@ global using System.Linq;
 global using System.Reflection;
 global using System.Threading.Tasks;
 
-//global using GiphyDotNet.Manager;
-//global using GiphyDotNet.Model.Parameters;
-//global using GiphyDotNet.Model.Results;
-
 global using Newtonsoft.Json;
 
 global using Discord_Bot;
 global using Discord_Bot.Services;
+global using Discord_Bot.Logic;
+global using Discord_Bot.Interfaces;
+global using Discord_Bot.Interfaces.Services;
+
+global using Discord.Commands;
+global using Discord.WebSocket;
 
 
+global using Webscraper_API.Scraper.Steam.Controllers;
+global using Webscraper_API;
+global using Webscraper_API.Scraper.Crunchyroll.Controllers;
+global using Webscraper_API.Scraper.Insight_Digital_Handy.Controllers;
+global using Webscraper_API.Scraper.Pokemons.Controller;
 global using Webscraper_API.Scraper.Crunchyroll.Models;
 global using Webscraper_API.Scraper.Honda.Models;
 global using Webscraper_API.Scraper.IMDB.Models;

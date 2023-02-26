@@ -1,11 +1,9 @@
-﻿using Discord.Commands;
-using Discord.WebSocket;
-using Discord_Bot.Logic;
-using Webscraper_API;
-using Webscraper_API.Scraper.Crunchyroll.Controllers;
-using Webscraper_API.Scraper.Insight_Digital_Handy.Controllers;
-using Webscraper_API.Scraper.Pokemons.Controller;
-using Webscraper_API.Scraper.Steam.Controllers;
+﻿using Discord;
+using Discord.Interactions;
+using Discord_Bot.Commands;
+using Discord_Bot.Commands.Slash;
+using Discord_Bot.Embeds;
+using Webscraper_API.Scraper.Twitch.Controllers;
 
 IConfiguration conf;
 
@@ -23,24 +21,29 @@ conf = builder.Build();
 var host = Host.CreateDefaultBuilder()
     .ConfigureServices((context, service) =>
     {
-        //service.AddSingleton<IDiscordBotModule, DiscordBotModule>();
-        //service.AddSingleton<DiscordEmbedBuilder>();
-        //service.AddScoped<IGiphyController, GiphyController>();
-
-        service.AddScoped<CrunchyrollService>();
-        service.AddScoped<SteamService>();
-        service.AddScoped<InsightDigitalService>();
-        service.AddScoped<PokemonService>();
+        service.AddScoped<ICrunchyrollService,CrunchyrollService>();
+        service.AddScoped<ISteamService, SteamService>();
+        service.AddScoped<IInsightDigitalService, InsightDigitalService>();
+        service.AddScoped<IPokemonService, PokemonService>();
 
         service.AddScoped<CrunchyrollLogic>();
         service.AddScoped<SteamLogic>();
         service.AddScoped<InsightDigitalLogic>();
         service.AddScoped<PokemonLogic>();
+        service.AddScoped<TwitchLogic>();
 
         service.AddScoped<ISteam_Api,Steam_Api>();
         service.AddScoped<ICR_API, CR_API>();
         service.AddScoped<IID_API, ID_API>();
         service.AddScoped<IPokemon_API, Pokemon_API>();
+        service.AddScoped<ITwitch_API, Twitch_API>();
+
+        service.AddSingleton<SlashBuilder>();
+        service.AddSingleton<ScraperSlashCommands>();
+        service.AddSingleton<CrunchyrollSlashCommands>();
+
+        service.AddSingleton<CrunchyrollEmbed>();
+        service.AddSingleton<TwitchEmbed>();
 
         service.AddSingleton<HttpClient>();
         service.AddSingleton<Browser>();
@@ -48,8 +51,7 @@ var host = Host.CreateDefaultBuilder()
         service.AddScoped<PdfSeperator>();
         service.AddScoped<PdfRandomizer>();
 
-        service.AddSingleton<DiscordSocketClient>();
-
+        service.AddSingleton(GetDiscordClient());
         service.AddSingleton<CommandService>();
         service.AddHostedService<Bot>();
     })
@@ -62,4 +64,14 @@ static void BuildConfig(IConfigurationBuilder builder)
     builder.SetBasePath(Directory.GetCurrentDirectory())
         .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
         .AddEnvironmentVariables();
+}
+
+static DiscordSocketClient GetDiscordClient()
+{
+    var socketConfig = new DiscordSocketConfig
+    {
+        GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.GuildMembers | GatewayIntents.GuildBans
+    };
+
+    return new DiscordSocketClient(socketConfig);
 }

@@ -1,4 +1,5 @@
 ﻿using Discord;
+using Discord_Bot.Interfaces.Services;
 using Webscraper_API;
 
 namespace Discord_Bot.Logic;
@@ -7,12 +8,12 @@ public class PokemonLogic
 {
 	public int MaxPokemons { get; set; }
 	private readonly IPokemon_API _PDexApi;
-	private readonly PokemonService _ps;
+	private readonly IPokemonService _ps;
 	public PokemonLogic(IServiceProvider service)
 	{
 		MaxPokemons = 1008;
 		_PDexApi = service.GetRequiredService<IPokemon_API>();
-		_ps = service.GetRequiredService<PokemonService>();
+		_ps = service.GetRequiredService<IPokemonService>();
 	}
 
 	public async Task GetPokedex(IUserMessage message)

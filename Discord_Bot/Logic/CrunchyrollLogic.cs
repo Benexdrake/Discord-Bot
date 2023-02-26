@@ -1,16 +1,16 @@
 ﻿using Discord;
-using Webscraper_API;
+using Discord_Bot.Interfaces.Services;
 
 namespace Discord_Bot.Logic;
 
 public class CrunchyrollLogic
 {
     private readonly ICR_API _api;
-    private readonly CrunchyrollService _cs;
+    private readonly ICrunchyrollService _cs;
     public CrunchyrollLogic(IServiceProvider service)
     {
         _api = service.GetRequiredService<ICR_API>();
-        _cs = service.GetRequiredService<CrunchyrollService>();
+        _cs = service.GetRequiredService<ICrunchyrollService>();
     }
 
     public async Task FullUpdate(IUserMessage message)
@@ -42,6 +42,13 @@ public class CrunchyrollLogic
         await GetAnimeWithEpisodes(urls, message);
     }
 
+    public async Task GetSingleAnime(IUserMessage message, string url)
+    {
+        var urls = new List<string>();
+        urls.Add(url);
+        await GetAnimeWithEpisodes(urls.ToArray(), message);
+    }
+
     #region Private Logic
     private async Task GetAnimeWithEpisodes(string[] urls, IUserMessage message)
     {
@@ -49,7 +56,11 @@ public class CrunchyrollLogic
         foreach (var url in urls)
         {
             var split = url.Split('/');
-            await message.ModifyAsync(x => x.Content = $"{i}/{urls.Length} Urls\nLooking for {url}, please wait\n{Helper.Percent(i, urls.Length)}% / 100%");
+            if(urls.Length> 1)
+                await message.ModifyAsync(x => x.Content = $"{i}/{urls.Length} Urls\nLooking for {url}\n{Helper.Percent(i, urls.Length)}% / 100%");
+            else
+                await message.ModifyAsync(x => x.Content = $"Looking for {url}");
+
             var AE = _api.GetAnimewithEpisodes(url, 2000).Result;
             if (AE is not null)
             {
@@ -61,21 +72,28 @@ public class CrunchyrollLogic
                     {
                         if (string.IsNullOrWhiteSpace(E.Description) || string.IsNullOrWhiteSpace(E.ReleaseDate))
                         {
-                            await message.ModifyAsync(x => x.Content = $"{i}/{urls.Length} Urls\nEpisode Details from {AE.Anime.Name} - {Helper.Percent(n, AE.Episodes.Length)}% / 100%\n{n + 1}/{AE.Episodes.Length}");
+                            if(urls.Length > 1)
+                                await message.ModifyAsync(x => x.Content = $"{i}/{urls.Length} Urls\nEpisode Details from {AE.Anime.Name}\n{Helper.Percent(n, AE.Episodes.Length)}% / 100%\n{n + 1}/{AE.Episodes.Length}");
+                            else
+                                await message.ModifyAsync(x => x.Content = $"Episode Details from {AE.Anime.Name}\n{Helper.Percent(n, AE.Episodes.Length)}% / 100%\n{n + 1}/{AE.Episodes.Length}");
                             var episode = _api.GetEpisodeDetails(AE.Episodes[n]).Result;
                             if (episode is not null)
                             {
+                                if (episode.Description == "")
+                                    Console.WriteLine($"Empty Description... {episode.AnimeId} - {episode.Url}");
                                 episode.EpisodeNr = AE.Episodes[n].EpisodeNr;
                                 AE.Episodes[n] = episode;
                             }
                         }
+                        else
+                            AE.Episodes[n] = E;
                     }
                 }
                 await _cs.CreateOrUpdateAsync(AE);
             }
             i++;
         }
-        await message.ModifyAsync(x => x.Content = $"100%% / 100%");
+        await message.ModifyAsync(x => x.Content = $"Done 100% / 100%");
     }
     #endregion
 }

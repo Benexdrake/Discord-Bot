@@ -1,15 +1,15 @@
 ﻿using Discord;
-using Webscraper_API;
+using Discord_Bot.Interfaces.Services;
 
 namespace Discord_Bot.Logic;
 
 public class InsightDigitalLogic
 {
-	private readonly InsightDigitalService _ids;	
+	private readonly IInsightDigitalService _ids;	
 	private readonly IID_API _api;
 	public InsightDigitalLogic(IServiceProvider service)
 	{
-		_ids = service.GetRequiredService<InsightDigitalService>();
+		_ids = service.GetRequiredService<IInsightDigitalService>();
 		_api = service.GetRequiredService<IID_API>();
 	}
 
