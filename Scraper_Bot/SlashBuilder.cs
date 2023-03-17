@@ -1,7 +1,8 @@
 ﻿using Discord;
+using Scraper_Bot.Interfaces.Services;
 using System.Diagnostics;
 
-namespace Discord_Bot;
+namespace Scraper_Bot;
 public class SlashBuilder
 {
     private readonly DiscordSocketClient _client;
@@ -21,7 +22,7 @@ public class SlashBuilder
     {
         _guild = _client.GetGuild(_guildId);
         await _guild.DeleteApplicationCommandsAsync();
-        
+
         return this;
     }
 
@@ -36,6 +37,20 @@ public class SlashBuilder
 
         return this;
     }
+
+    public async Task<SlashBuilder> LFG()
+    {
+        var lfg = new SlashCommandBuilder();
+
+        lfg.WithName("lfg").WithDescription("add an lfg request into thread")
+            .AddOption(new SlashCommandOptionBuilder().WithName("url").WithDescription("enter a valid steam url into").WithType(ApplicationCommandOptionType.String).WithRequired(true))
+            .AddOption(new SlashCommandOptionBuilder().WithName("description").WithDescription("insert a little text for what u search").WithType(ApplicationCommandOptionType.String).WithRequired(false));
+
+        await SlashCommandCreator(lfg);
+
+        return this;
+    }
+
     public async Task<SlashBuilder> Scraper()
     {
         try
@@ -63,7 +78,7 @@ public class SlashBuilder
                        .AddChoice("angebote", 4))
                 .AddOption(new SlashCommandOptionBuilder().WithName("update").WithDescription("soft or hard update of all steam games").WithType(ApplicationCommandOptionType.String)
                         .AddChoice("fullupdate", "hard")
-                        .AddChoice("softupdate","soft"))
+                        .AddChoice("softupdate", "soft"))
                 .AddOption(new SlashCommandOptionBuilder().WithName("user").WithDescription("search for an user profile").WithType(ApplicationCommandOptionType.String)));
 
 
@@ -76,7 +91,6 @@ public class SlashBuilder
         }
         return this;
     }
-
 
     private async Task SlashCommandCreator(SlashCommandBuilder slashCommandBuilder)
     {

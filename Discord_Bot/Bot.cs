@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord_Bot.Commands.Slash;
+using OpenQA.Selenium.DevTools.V105.Page;
 using Webscraper_API.Scraper.Dota2.Models;
 
 namespace Discord_Bot;
@@ -12,7 +13,11 @@ public class Bot : IHostedService
     private readonly CommandService _commands;
     private readonly ScraperSlashCommands _slash;
     private readonly CrunchyrollSlashCommands _crunchyrollSlashCommands;
+    private readonly SteamSlashCommands _steamSlashCommands;
+    private readonly ToolsSlashCommands _toolsSlashCommands;
     private readonly SlashBuilder _slashBuilder;
+
+    private readonly Browser _browser;
 
 
     private readonly string PREFIX;
@@ -27,7 +32,11 @@ public class Bot : IHostedService
         _commands = service.GetRequiredService<CommandService>();
         _slash = service.GetRequiredService<ScraperSlashCommands>();
         _crunchyrollSlashCommands= service.GetRequiredService<CrunchyrollSlashCommands>();
+        _steamSlashCommands= service.GetRequiredService<SteamSlashCommands>();
+        _toolsSlashCommands = service.GetRequiredService<ToolsSlashCommands>();
         _slashBuilder = service.GetRequiredService<SlashBuilder>();
+
+        _browser = service.GetRequiredService<Browser>();
 
         PREFIX = config["Prefix"];
         KEY = config["DiscordKeys:Token"];
@@ -44,10 +53,10 @@ public class Bot : IHostedService
 
     private async Task BotClient_SlashCommandExecuted(SocketSlashCommand arg)
     {
-        if(arg.Data.Name.Equals("scraper"))
+        if (arg.Data.Name.Equals("scraper"))
         {
             var option = arg.Data.Options.FirstOrDefault();
-            switch (option.Name) 
+            switch (option.Name)
             {
                 case "crunchyroll":
                     await _slash.Crunchyroll(arg);
@@ -55,17 +64,27 @@ public class Bot : IHostedService
                 case "imdb":
 
                     break;
+                case "steam":
+                    await _slash.Steam(arg);
+                    break;
             }
         }
-        else if(arg.Data.Name.Equals("crunchyroll"))
+        else if (arg.Data.Name.Equals("crunchyroll"))
         {
             await _crunchyrollSlashCommands.Start(arg);
         }
-        else if(arg.Data.Name.Equals("twitch"))
+        else if (arg.Data.Name.Equals("twitch"))
             await _slash.Twitch(arg);
-            
+        else if(arg.Data.Name.Equals("tools"))
+        {
+            ulong id = arg.ChannelId.Value;
+            var guildId = ulong.Parse(_config["GuildID"]);
+            var guild = _botClient.GetGuild(guildId);
+            var channel = guild.GetTextChannel(id);
 
-}
+           await _toolsSlashCommands.Purge(arg, channel);
+        }
+    }
 
     private async Task BotClient_UserJoined(SocketGuildUser arg)
     {
@@ -102,10 +121,10 @@ public class Bot : IHostedService
 
         try
         {
-            await _slashBuilder.Start().Result
-                   .Scraper().Result
-                   .Crunchyroll().Result
-                   .Twitch();
+            await _slashBuilder
+                   .Start().Result
+                   .Tools().Result
+                   .Scraper();
         }
         catch (Exception err)
         {

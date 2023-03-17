@@ -12,11 +12,11 @@ global using System.Threading.Tasks;
 
 global using Newtonsoft.Json;
 
-global using Discord_Bot;
-global using Discord_Bot.Services;
-global using Discord_Bot.Logic;
-global using Discord_Bot.Interfaces;
-global using Discord_Bot.Interfaces.Services;
+global using Scraper_Bot;
+global using Scraper_Bot.Services;
+global using Scraper_Bot.Logic;
+global using Scraper_Bot.Interfaces;
+global using Scraper_Bot.Interfaces.Services;
 
 global using Discord.Commands;
 global using Discord.WebSocket;
@@ -33,4 +33,8 @@ global using Webscraper_API.Scraper.IMDB.Models;
 global using Webscraper_API.Scraper.Pokemons.Models;
 global using Webscraper_API.Scraper.TCG_Pokemon.Models;
 global using Webscraper_API.Scraper.TCG_Magic.Model;
+global using Webscraper_API.Scraper.Steam.Controllers;
+global using Webscraper_API.Scraper.Steam.Models;
+global using Webscraper_API.Scraper.Insight_Digital_Handy.Controllers;
+global using Webscraper_API.Scraper.Insight_Digital_Handy.Models;
 global using Webscraper_API.Interfaces;

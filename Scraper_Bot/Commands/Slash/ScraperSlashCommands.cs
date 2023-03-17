@@ -1,19 +1,18 @@
 ﻿using Discord;
 using Discord.Interactions;
+using Scraper_Bot.Logic;
 using Serilog;
 
-namespace Discord_Bot.Commands.Slash;
+namespace Scraper_Bot.Commands.Slash;
 
 public class ScraperSlashCommands
 {
     private readonly CrunchyrollLogic _cl;
-    private readonly TwitchLogic _tl;
     private readonly SteamLogic _sl;
-	public ScraperSlashCommands(IServiceProvider service)
-	{
+    public ScraperSlashCommands(IServiceProvider service)
+    {
         _cl = service.GetRequiredService<CrunchyrollLogic>();
-        _tl = service.GetRequiredService<TwitchLogic>();
-        _sl= service.GetRequiredService<SteamLogic>();
+        _sl = service.GetRequiredService<SteamLogic>();
     }
 
     // Crunchyroll
@@ -66,7 +65,7 @@ public class ScraperSlashCommands
 
                 var option = arg.Data.Options.FirstOrDefault();
 
-                
+
 
                 switch ("")
                 {
@@ -77,20 +76,6 @@ public class ScraperSlashCommands
             {
                 Log.Logger.Error(err.ToString());
             }
-        });
-    }
-
-    // Twitch
-
-    public async Task Twitch(SocketSlashCommand arg)
-    {
-        _ = Task.Run(async () =>
-        {
-            await arg.RespondAsync("Please wait");
-            var message = arg.GetOriginalResponseAsync().Result as IUserMessage;
-
-            var option = arg.Data.Options.FirstOrDefault();
-            await _tl.GetTwitchProfil(message, option.Value.ToString());
         });
     }
 
@@ -126,7 +111,7 @@ public class ScraperSlashCommands
                         await _sl.GamesUpdate(message, option.Value.ToString());
                         break;
                     default:
-                        
+
                         break;
                 }
             }

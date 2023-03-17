@@ -1,8 +1,7 @@
 ﻿using Discord;
-using Discord.Interactions;
-using Discord_Bot.Commands;
-using Discord_Bot.Commands.Slash;
-using Discord_Bot.Embeds;
+using Scraper_Bot.Commands.Slash;
+using Webscraper_API.Scraper.Amazon.Controllers;
+using Webscraper_API.Scraper.TVProgramm.Controllers;
 using Webscraper_API.Scraper.Twitch.Controllers;
 
 IConfiguration conf;
@@ -30,22 +29,19 @@ var host = Host.CreateDefaultBuilder()
         service.AddScoped<SteamLogic>();
         service.AddScoped<InsightDigitalLogic>();
         service.AddScoped<PokemonLogic>();
-        service.AddScoped<TwitchLogic>();
 
         service.AddScoped<ISteam_Api,Steam_Api>();
         service.AddScoped<ICR_API, CR_API>();
         service.AddScoped<IID_API, ID_API>();
         service.AddScoped<IPokemon_API, Pokemon_API>();
         service.AddScoped<ITwitch_API, Twitch_API>();
+        service.AddScoped<TVDirekt_API>();
+        service.AddScoped<Amazon_API>();
 
         service.AddSingleton<SlashBuilder>();
         service.AddSingleton<ScraperSlashCommands>();
-        service.AddSingleton<CrunchyrollSlashCommands>();
-        service.AddSingleton<SteamSlashCommands>();
         service.AddSingleton<ToolsSlashCommands>();
 
-        service.AddSingleton<CrunchyrollEmbed>();
-        service.AddSingleton<TwitchEmbed>();
         service.AddSingleton<SteamEmbed>();
 
         service.AddSingleton<HttpClient>();

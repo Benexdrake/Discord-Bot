@@ -2,9 +2,9 @@
 using System.Text.Json.Nodes;
 using System.Text;
 using Webscraper_API.Scraper.Steam.Models;
-using Discord_Bot.Interfaces.Services;
+using Scraper_Bot.Interfaces.Services;
 
-namespace Discord_Bot.Services;
+namespace Scraper_Bot.Services;
 
 public class SteamService : ISteamService
 {
