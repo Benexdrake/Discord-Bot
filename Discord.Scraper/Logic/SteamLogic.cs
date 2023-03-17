@@ -1,7 +1,4 @@
-﻿using OpenQA.Selenium.DevTools.V105.Network;
-using Scraper_Bot.Interfaces.Services;
-
-namespace Scraper_Bot.Logic;
+﻿namespace Scraper_Bot.Logic;
 
 public class SteamLogic
 {
@@ -13,7 +10,7 @@ public class SteamLogic
         _api = service.GetRequiredService<ISteam_Api>();
     }
 
-    public async Task GamePerUrl(Discord.IUserMessage message, string url)
+    public async Task GamePerUrl(IUserMessage message, string url)
     {
         if (!string.IsNullOrWhiteSpace(url))
         {
@@ -25,7 +22,7 @@ public class SteamLogic
             message.ModifyAsync(x => x.Content = "Something was wrong with the Url");
     }
 
-    public async Task GamesFromWishlist(Discord.IUserMessage message, string wishlistUrl)
+    public async Task GamesFromWishlist(IUserMessage message, string wishlistUrl)
     {
         var urls = _api.GetGameUrlsFromWishlist(wishlistUrl);
 
@@ -44,7 +41,7 @@ public class SteamLogic
         message.ModifyAsync(x => x.Content = $"Found {urls.Result.Length} Games");
     }
 
-    public async Task GamesFromCategory(Discord.IUserMessage message, string category)
+    public async Task GamesFromCategory(IUserMessage message, string category)
     {
         int n = int.Parse(category);
 
@@ -64,7 +61,7 @@ public class SteamLogic
         message.ModifyAsync(x => x.Content = $"Found {urls.Result.Length} Games");
     }
 
-    public async Task GamesUpdate(Discord.IUserMessage message, string category)
+    public async Task GamesUpdate(IUserMessage message, string category)
     {
         var apps = _api.GetAllGameIds().Result;
 
@@ -105,7 +102,7 @@ public class SteamLogic
         }
     }
 
-    public async Task GetUser(Discord.IUserMessage message, string url)
+    public async Task GetUser(IUserMessage message, string url)
     {
         message.ModifyAsync(x => x.Content = $"Looking for the User {url}");
         var user = _api.GetUser(url).Result;
