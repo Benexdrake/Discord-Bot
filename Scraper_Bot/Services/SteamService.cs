@@ -1,10 +1,4 @@
-﻿using System.Net.Http.Json;
-using System.Text.Json.Nodes;
-using System.Text;
-using Webscraper_API.Scraper.Steam.Models;
-using Scraper_Bot.Interfaces.Services;
-
-namespace Scraper_Bot.Services;
+﻿namespace Scraper_Bot.Services;
 
 public class SteamService : ISteamService
 {
@@ -20,27 +14,27 @@ public class SteamService : ISteamService
         URL = _config["API"] + "/api/steam/";
     }
 
-    public async Task<Game> GetSteamGame(string url)
+    public async Task<SteamGame> GetSteamGame(string url)
     {
         var split = url.Split('/');
         var u = URL + split[4];
-        var game = _client.GetFromJsonAsync<Game>(u).Result;
+        var game = _client.GetFromJsonAsync<SteamGame>(u).Result;
         return game;
     }
 
-    public async Task<Game[]> GetAllSteamGames()
+    public async Task<SteamGame[]> GetAllSteamGames()
     {
-        var games = _client.GetFromJsonAsync<Game[]>(URL).Result;
+        var games = _client.GetFromJsonAsync<SteamGame[]>(URL).Result;
         return games;
     }
 
-    public async Task CreateOrUpdate(Game game)
+    public async Task CreateOrUpdate(SteamGame game)
     {
-        await _client.PostAsJsonAsync<Game>(URL, game);
+        await _client.PostAsJsonAsync<SteamGame>(URL, game);
     }
 
-    public async Task CreateOrUpdateUser(User user)
+    public async Task CreateOrUpdateUser(SteamUser user)
     {
-        await _client.PostAsJsonAsync<User>(URL + "user", user);
+        await _client.PostAsJsonAsync<SteamUser>(URL + "user", user);
     }
 }

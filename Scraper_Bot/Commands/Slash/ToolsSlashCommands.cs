@@ -1,8 +1,4 @@
-﻿using Discord;
-using Webscraper_API.Scraper.Amazon.Controllers;
-using Webscraper_API.Scraper.TVProgramm.Controllers;
-
-namespace Scraper_Bot.Commands.Slash;
+﻿namespace Scraper_Bot.Commands.Slash;
 
 public class ToolsSlashCommands
 {

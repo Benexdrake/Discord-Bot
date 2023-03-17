@@ -4,7 +4,7 @@ namespace Scraper_Bot;
 
 public class SteamEmbed
 {
-    public async Task<EmbedBuilder> GameEmbed(Webscraper_API.Scraper.Steam.Models.Game g)
+    public async Task<EmbedBuilder> GameEmbed(SteamGame g)
     {
         var embed = new EmbedBuilder();
 
@@ -89,7 +89,7 @@ public class SteamEmbed
         return embed;
     }
 
-    public async Task<EmbedBuilder> UserEmbed(User user)
+    public async Task<EmbedBuilder> UserEmbed(SteamUser user)
     {
         var embed = new EmbedBuilder();
 

@@ -1,8 +1,4 @@
-﻿using Discord;
-using Discord_Bot.Interfaces.Services;
-using Webscraper_API;
-
-namespace Discord_Bot.Logic;
+﻿namespace Discord_Bot.Logic;
 
 public class PokemonLogic
 {

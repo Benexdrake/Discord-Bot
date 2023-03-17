@@ -1,8 +1,4 @@
-﻿using Discord;
-using Scraper_Bot.Commands.Slash;
-using Webscraper_API.Scraper.Amazon.Controllers;
-using Webscraper_API.Scraper.TVProgramm.Controllers;
-using Webscraper_API.Scraper.Twitch.Controllers;
+﻿
 
 IConfiguration conf;
 

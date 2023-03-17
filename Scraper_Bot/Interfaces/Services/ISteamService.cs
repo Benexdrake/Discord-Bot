@@ -2,8 +2,8 @@
 
 public interface ISteamService
 {
-    Task<Game[]> GetAllSteamGames();
-    Task CreateOrUpdate(Game game);
-    Task CreateOrUpdateUser(User user);
-    Task<Game> GetSteamGame(string url);
+    Task<SteamGame[]> GetAllSteamGames();
+    Task CreateOrUpdate(SteamGame game);
+    Task CreateOrUpdateUser(SteamUser user);
+    Task<SteamGame> GetSteamGame(string url);
 }

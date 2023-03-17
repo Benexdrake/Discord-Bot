@@ -1,8 +1,4 @@
-﻿using System.Net.Http.Json;
-using Scraper_Bot.Interfaces.Services;
-using Webscraper_API.Scraper.Insight_Digital_Handy.Models;
-
-namespace Scraper_Bot.Services;
+﻿namespace Scraper_Bot.Services;
 
 public class InsightDigitalService : IInsightDigitalService
 {

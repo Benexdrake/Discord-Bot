@@ -17,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\WebScraper-3.0\Webscraper.API\Webscraper.API.csproj" />
+    <ProjectReference Include="..\..\WebScraper-3.0\Webscraper.Models\Webscraper.Models.csproj" />
     <ProjectReference Include="..\..\WebScraper-3.0\Webscraper_API\Webscraper_API.csproj" />
   </ItemGroup>
 
